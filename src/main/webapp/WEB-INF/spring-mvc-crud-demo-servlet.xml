@@ -46,6 +46,7 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="myDataSource" />
+		<!-- Scan the package for @Entity classes, comma separated list -->
 		<property name="packagesToScan" value="com.crm.models" />
 		<property name="hibernateProperties">
 		   <props>
@@ -56,6 +57,9 @@
    </bean>	  
 
     <!-- Step 3: Setup Hibernate transaction manager -->
+	<!-- This will do the magic of beginTransaction() and commit() Transaction behind the scenes
+	Add @Transactional annotation at the beginning of your method
+	-->
 	<bean id="myTransactionManager"
             class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
