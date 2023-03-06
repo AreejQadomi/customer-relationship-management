@@ -5,11 +5,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
+@Component
 /*
 * Added to DAO implementations;
 * since it's a subclass and inherits the annotation @Component, that means
@@ -52,6 +54,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public Customer getCustomer(int id) {
+        System.out.println("\n=======>> Inside com.crm.dao.CustomerDAOImpl.getCustomer");
+
         // Get the current session
         Session currentSession = sessionFactory.getCurrentSession();
 
@@ -67,5 +71,7 @@ public class CustomerDAOImpl implements CustomerDAO {
         query.setParameter("customerId", id);
 
         query.executeUpdate();
+
+        System.out.println("\n\n\n\n=======>> Executing deleteCustomer!!\n\n\n\n");
     }
 }

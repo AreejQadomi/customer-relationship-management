@@ -3,11 +3,9 @@ package com.crm.models;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
-@Component
 @Entity
 @Table(name = "customer")
 @Getter @Setter @ToString
